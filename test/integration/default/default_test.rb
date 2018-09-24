@@ -16,3 +16,7 @@ end
 describe port(80) do
   it { should be_listening }
 end
+
+describe http("http://localhost", enabled_remote_worker: true) do
+  its("status") { should cmp 502 }
+end

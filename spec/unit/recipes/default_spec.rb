@@ -19,6 +19,10 @@ describe 'node::default' do
       expect { chef_run }.to_not raise_error
     end
 
+    it 'updates all sources' do
+      expect(chef_run).to update_apt_update('update_sources')
+    end
+
     it 'should install nginx' do
       expect(chef_run).to install_package("nginx")
     end
